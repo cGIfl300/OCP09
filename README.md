@@ -1,7 +1,12 @@
 # --- UNDER DEVELOPMENT ---
+Released on:
+- [Github](https://github.com/cgifl300/OCP09/)
+- [Framagit](https://framagit.org/cgifl300/litreview/)
 
-# OC_P09
-A Django app for studies
+
+# LITReview OC_P09
+A Django app for studies. The purpose is to release a MVP based on the django
+framework and to release it on heroku cloud.
 
 # Prerequisite
 I suppose you ever installed python and git before.  
@@ -14,7 +19,7 @@ If not consider doing it:
 Go into your source directory  
 `cd ~/src`  
 Then start cloning  
-`git clone https://githubcom/cgifl300/OCP09`  
+`git clone https://github.com/cgifl300/OCP09`  
 ### Create the venv and install the requirements
 Enter the cloned directory  
 `cd OCP09`  

@@ -41,6 +41,6 @@ Development in progress, see [what happen here](kanban.md)
 ### Internal note:
 
 - Problem in the db UML Diagram:    
-  Hotfixed - Ticket.time_created option auto_add_now didn't exist, replaced by
+  Hotfixes - Ticket.time_created option auto_add_now didn't exist, replaced by
   auto_now_add.
 - Here will be the next note

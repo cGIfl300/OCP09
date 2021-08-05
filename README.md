@@ -38,7 +38,7 @@ Activate the venv for windows
 
 Development in progress, see [what happen here](kanban.md)
 
-### Internal note:
+### Internal notes:
 
 - Problem in the db UML Diagram:    
   Hotfixes - Ticket.time_created option auto_add_now didn't exist, replaced by

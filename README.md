@@ -28,8 +28,19 @@ Enter the cloned directory
 Activate the venv for linux, bsd or macOS  
 `source venv/bin/activate`  
 Activate the venv for windows  
-`.\venv\Scripts\activate.bat`  
+`.\venv\Scripts\activate.bat`
+
 ### Install requirements
+
 `pip install -r requirements.txt`
+
 # DEV
+
 Development in progress, see [what happen here](kanban.md)
+
+### Internal note:
+
+- Problem in the db UML Diagram:    
+  Ticket.time_created option auto_add_now didn't exist, replaced by
+  auto_now_add.
+- Here will be the next note

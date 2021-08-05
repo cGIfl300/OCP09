@@ -40,7 +40,9 @@ Development in progress, see [what happen here](kanban.md)
 
 ### Internal notes:
 
-- Problem in the db UML Diagram:    
+- Problem in the db UML Diagram:   
   Hotfixes - Ticket.time_created option auto_add_now didn't exist, replaced by
   auto_now_add.
-- Here will be the next note
+- Problem with model.py:  
+  Hotfixes - body = models.CharField(max_length=8192, blank=True) to body =
+  models.TextField(max_length=8192, blank=True) to stick the UML model.

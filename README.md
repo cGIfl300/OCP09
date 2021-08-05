@@ -2,6 +2,7 @@
 Released on:
 - [Github](https://github.com/cgifl300/OCP09/)
 - [Framagit](https://framagit.org/cgifl300/litreview/)
+- [SDF - Gitea](https://git.sdf.org/elec/LITReview)
 
 
 # LITReview OC_P09

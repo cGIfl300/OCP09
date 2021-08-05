@@ -1,3 +1,5 @@
+# --- UNDER DEVELOPMENT ---
+
 # OC_P09
 A Django app for studies
 
@@ -12,10 +14,10 @@ If not consider doing it:
 Go into your source directory  
 `cd ~/src`  
 Then start cloning  
-`git clone https://githubcom/cgifl300/OC_P09`  
+`git clone https://githubcom/cgifl300/OCP09`  
 ### Create the venv and install the requirements
 Enter the cloned directory  
-`cd OC_P09`  
+`cd OCP09`  
 `python -m venv venv`  
 Activate the venv for linux, bsd or macOS  
 `source venv/bin/activate`  

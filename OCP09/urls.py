@@ -20,5 +20,5 @@ from store.views import welcome_screen
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('store/', welcome_screen),
+    path('', welcome_screen),
 ]

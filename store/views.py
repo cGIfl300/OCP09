@@ -1,6 +1,7 @@
-# from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
-# Create your views here.
 
+@login_required(login_url="/admin/")
 def welcome_screen(request):
-    pass
+    return render(request, "welcome_screen.html")

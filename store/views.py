@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 
@@ -58,14 +59,11 @@ def register_view(request):
             # If user already exist, redirect to the login page.
             return redirect("/login/")
         else:
-            # Create the user.
+            user = User.objects.create_user(
+                username=username, email="not@needed.com", password=password
+            )
+            login(request, user)
 
-            # Check if the username already is in our database
-            # If True, return to the login page.
-            # Else Create the user
-            # Return a success page
-
-            # Follow just for DEBUG
             return render(request, "success_create.html")
 
     return render(request, "register.html")

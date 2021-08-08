@@ -1,6 +1,6 @@
 {% include "header.html" %}
-{% if user.username %}
-    Hello, {{ user.username }}.
-{% endif %}
 {% include "navbar.html" %}
+{% if user.username %}
+    <p>Hello, {{ user.username }}.</p>
+{% endif %}
 {% include "footer.html" %}

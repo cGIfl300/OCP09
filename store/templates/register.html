@@ -3,37 +3,35 @@
 <div class="container-fluid">
     <div class="row align-items-start">
         <div class="col">
-            <div class="col">
-                <div class="text-center">
-                    <h2>Register</h2>
-                    <a href="/register/">
-                        <button type="button" class="btn btn-primary">
-                            Register
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <h2>Login</h2>
-            <form action="/login/" method="POST">
+            <h2>Register</h2>
+            <form action="/register/" method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="usernameInput1"
                            class="form-label">Username</label>
                     <input type="text" class="form-control" id="username1"
                            aria-describedby="usernameHelp" name="username">
-                    <div id="username1Help" class="form-text">Need a registered
+                    <div id="username1Help" class="form-text">Choose your
                         username.
                     </div>
                 </div>
+
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <input type="password" class="form-control"
-                           id="password1" name="password">
+                           id="password1" name="password1">
                 </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword2" class="form-label">Password
+                        (verify)</label>
+                    <input type="password" class="form-control"
+                           id="password2" name="password2">
+                </div>
+
                 <div class="text-end">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary">Register
+                    </button>
                 </div>
             </form>
         </div>

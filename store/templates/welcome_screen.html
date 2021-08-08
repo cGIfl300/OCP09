@@ -1,1 +1,6 @@
-Hello, {{ user.username }}.
+{% include "header.html" %}
+{% if user.username %}
+    Hello, {{ user.username }}.
+{% endif %}
+{% include "navbar.html" %}
+{% include "footer.html" %}

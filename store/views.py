@@ -1,69 +1,41 @@
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 
 
-@login_required
-def welcome_screen(request):
-    return render(request, "welcome_screen.html")
-
-
-def logout_view(request):
-    # Just logout
-    logout(request)
+def stream_view(request):
+    # Here will be the view "Flux"
     return redirect("/")
 
 
-def login_view(request):
-    # if this is a POST request we need to process the form data
-    if request.method == "POST":
-        user = authenticate(
-            username=request.POST.get("username", None),
-            password=request.POST.get("password", None),
-        )
-        if user is not None:
-            login(request, user)
-            # Redirect to a success page.
-            return render(request, "success_identify.html")
-        else:
-            # 'invalid login'
-            return render(request, "login.html")
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        return render(request, "login.html")
-
-    return render(request, "login.html")
+def subscribe_view(request):
+    # Here will be the view "Flux"
+    return redirect("/")
 
 
-def register_view(request):
-    # if this is a POST request we need to process the form data
-    if request.method == "POST":
-        # Here will be the code
-        username = request.POST.get("username", None)
-        password1 = request.POST.get("password1", None)
-        password2 = request.POST.get("password2", None)
+def create_ticket_view(request):
+    # Here will be the view "Ticket"
+    return redirect("/")
 
-        if password1 == password2:
-            password = password1
-        else:
-            password = None
 
-        user = authenticate(
-            username=username,
-            password=password,
-        )
-        if user is not None:
-            login(request, user)
-            # If user already exist, redirect to the login page.
-            return redirect("/login/")
-        else:
-            user = User.objects.create_user(
-                username=username, email="not@needed.com", password=password
-            )
-            login(request, user)
+def create_comment_view(request):
+    # Here will be the view "Critique"
+    return redirect("/")
 
-            return render(request, "success_create.html")
 
-    return render(request, "register.html")
+def reply_comment_view(request):
+    # Here will be the view "Reply to a critique"
+    return redirect("/")
+
+
+def my_stream_view(request):
+    # Here will be the view "Voir vos propres post"
+    return redirect("/")
+
+
+def edit_comment_view(request):
+    # Here will be the view "Modifier votre propre critique"
+    return redirect("/")
+
+
+def edit_ticket_view(request):
+    # Here will be the view "Modifier votre propre ticket"
+    return redirect("/")

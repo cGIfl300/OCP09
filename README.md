@@ -41,6 +41,10 @@ Activate the venv for windows
 
 `pip install -r requirements.txt`
 
+### Initialise the dev DB
+
+`python manage.py migrate`
+
 # DEV
 
 Development in progress, see [what happen here](kanban.md)

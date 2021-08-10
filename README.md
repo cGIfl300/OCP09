@@ -45,6 +45,10 @@ Activate the venv for windows
 
 `python manage.py migrate`
 
+### Run the dev server
+
+`python manage.py runserver`
+
 # DEV
 
 Development in progress, see [what happen here](kanban.md)

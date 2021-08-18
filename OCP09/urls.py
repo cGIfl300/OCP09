@@ -20,6 +20,7 @@ from store.login_views import login_view
 from store.logout_views import logout_view
 from store.register_views import register_view
 from store.welcome_views import welcome_screen
+from subscribe.views import subscribe_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,4 +28,5 @@ urlpatterns = [
     path("login/", login_view),
     path("register/", register_view),
     path("logout/", logout_view),
+    path("subscribe/", subscribe_view),
 ]

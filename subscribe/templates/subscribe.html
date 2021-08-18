@@ -1,0 +1,52 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+
+{% block content %}
+    <div class="container mb-3 text-center">
+        Suivre d'autres utilisateurs
+    </div>
+    <div class="container mb-3 text-center">
+        <form>
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <input type="text" class="form-control" id="user_to_follow">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Suivre
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container-fluid mb-3 text-center">
+        Abonnements
+    </div>
+    <div class="container mb-3 text-center">
+        <table class="table table-bordered text-center align-middle">
+            <tr>
+                <td class="col-10">Mélanie</td>
+                <td>
+                    <form>
+                        <input type="hidden" name="user_to_unfollow"
+                               value="3487">
+                        <button type="submit" class="btn btn-primary">Désabonner
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="container-fluid mb-3 text-center">
+        Abonnés
+    </div>
+    <div class="container mb-3 text-center">
+        <table class="table table-bordered text-center align-middle">
+            <tr>
+                <td class="col-10">Mélanie</td>
+            </tr>
+        </table>
+    </div>
+{% endblock content %}
+{% include "footer.html" %}

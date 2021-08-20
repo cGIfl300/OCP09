@@ -20,7 +20,8 @@ from store.login_views import login_view
 from store.logout_views import logout_view
 from store.register_views import register_view
 from store.welcome_views import welcome_screen
-from subscribe.views import subscribe_view, followed_users, un_follow
+from subscribe.followed_user import followed_users
+from subscribe.views import subscribe_view, un_follow
 
 urlpatterns = [
     path("admin/", admin.site.urls),

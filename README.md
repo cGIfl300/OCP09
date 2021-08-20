@@ -49,10 +49,6 @@ Activate the venv for windows
 
 `python manage.py runserver`
 
-# DEV
-
-Development in progress, see [what happen here](kanban.md)
-
 ### Internal notes:
 
 - Problem in the db UML Diagram:   

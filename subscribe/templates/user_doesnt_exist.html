@@ -1,0 +1,9 @@
+{% extends "subscribe.html" %}
+{% block warnings %}
+    {% include "reload_subscribe.html" %}
+    <div class="container text-center">
+        <button type="button" class="btn btn-outline-danger">L'utilisateur
+            n'existe pas.
+        </button>
+    </div>
+{% endblock warnings %}

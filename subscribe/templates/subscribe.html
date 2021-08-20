@@ -1,15 +1,20 @@
 {% include "header.html" %}
 {% include "navbar.html" %}
-
+<div class="m-3">
+    {% block warnings %}
+    {% endblock warnings %}
+</div>
 {% block content %}
     <div class="container mb-3 text-center">
         Suivre d'autres utilisateurs
     </div>
     <div class="container mb-3 text-center">
-        <form>
+        <form action="/subscribe/" method="POST">
+            {% csrf_token %}
             <div class="row align-items-center">
                 <div class="col-10">
-                    <input type="text" class="form-control" id="user_to_follow">
+                    <input type="text" class="form-control" id="user_to_follow"
+                           name="user_to_follow">
                 </div>
                 <div class="col-2">
                     <button type="submit" class="btn btn-primary">Suivre
@@ -24,17 +29,21 @@
     </div>
     <div class="container mb-3 text-center">
         <table class="table table-bordered text-center align-middle">
-            <tr>
-                <td class="col-10">Mélanie</td>
-                <td>
-                    <form>
-                        <input type="hidden" name="user_to_unfollow"
-                               value="3487">
-                        <button type="submit" class="btn btn-primary">Désabonner
-                        </button>
-                    </form>
-                </td>
-            </tr>
+            {% for u in followed_users %}
+                <tr>
+                    <td class="col-10">{{ u.followed_user.username }}</td>
+                    <td>
+                        <form action="/unfollow/" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="user_to_unfollow"
+                                   value="{{ u.followed_user.username }}">
+                            <button type="submit" class="btn btn-primary">
+                                Désabonner
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 
@@ -44,7 +53,9 @@
     <div class="container mb-3 text-center">
         <table class="table table-bordered text-center align-middle">
             <tr>
-                <td class="col-10">Mélanie</td>
+                {% for u in who_is_following %}
+                    <td class="col-10">{{ u }}</td>
+                {% endfor %}
             </tr>
         </table>
     </div>

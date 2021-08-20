@@ -1,0 +1,8 @@
+{% extends "subscribe.html" %}
+{% block warnings %}
+    {% include "reload_subscribe.html" %}
+    <div class="container text-center">
+        <button type="button" class="btn btn-outline-info">Vous
+            suivez déjà {{ user_to_follow }}</button>
+    </div>
+{% endblock warnings %}

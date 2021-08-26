@@ -1,0 +1,44 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% if user.username %}
+    <p>Hello, {{ user.username }}.</p>
+{% endif %}
+{% block content %}
+    <div class="container mb-3 text-center">
+        Créer un ticket
+    </div>
+    <div class="container mb-3 text-center">
+        <form>
+            <div class="row">
+                <div class="text-start">
+                    <label for="ticket_title" class="form-label">Titre</label>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="ticket_title"
+                           name="ticket_title">
+                </div>
+
+                <div class="text-start">
+                    <label for="ticket_description" class="form-label">Description</label>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" id="ticket_description"
+                              name="ticket_description" row=3></textarea>
+                </div>
+
+                <div class="mb-3 text-start">
+                    <label for="ticket_picture" class="form-label">Image</label>
+                    <input class="form-control" type="file" id="ticket_picture"
+                           name="ticket_picture">
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary mx-3 my-3">
+                        Envoyer
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+{% include "footer.html" %}

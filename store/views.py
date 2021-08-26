@@ -6,11 +6,6 @@ def stream_view(request):
     return redirect("/")
 
 
-def create_ticket_view(request):
-    # Here will be the view "Ticket"
-    return redirect("/")
-
-
 def create_comment_view(request):
     # Here will be the view "Critique"
     return redirect("/")

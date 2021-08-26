@@ -3,5 +3,7 @@
 {% if user.username %}
     <p>Hello, {{ user.username }}.</p>
 {% endif %}
+{% block content %}
+{% endblock content %}
 {% include "stream.html" %}
 {% include "footer.html" %}

@@ -22,6 +22,7 @@ from store.register_views import register_view
 from store.welcome_views import welcome_screen
 from subscribe.followed_user import followed_users
 from subscribe.views import subscribe_view, un_follow
+from ticket.views import create_ticket_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -32,4 +33,5 @@ urlpatterns = [
     path("subscribe/", subscribe_view),
     path("followed_users/", followed_users),
     path("unfollow/", un_follow),
+    path("ticket/", create_ticket_view),
 ]

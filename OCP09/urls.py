@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from create_review.views import create_review_view
 from store.login_views import login_view
 from store.logout_views import logout_view
 from store.register_views import register_view
 from store.welcome_views import welcome_screen
 from subscribe.followed_user import followed_users
 from subscribe.views import subscribe_view, un_follow
-from ticket.views import create_ticket_view
+from ticket.views import create_ticket_view, tickets_view, delete_ticket
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -33,5 +34,8 @@ urlpatterns = [
     path("subscribe/", subscribe_view),
     path("followed_users/", followed_users),
     path("unfollow/", un_follow),
-    path("ticket/", create_ticket_view),
+    path("create_ticket/", create_ticket_view),
+    path("create_review/", create_review_view),
+    path("tickets/", tickets_view),
+    path("delete_ticket/", delete_ticket),
 ]

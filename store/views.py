@@ -6,11 +6,6 @@ def stream_view(request):
     return redirect("/")
 
 
-def create_comment_view(request):
-    # Here will be the view "Critique"
-    return redirect("/")
-
-
 def reply_comment_view(request):
     # Here will be the view "Reply to a critique"
     return redirect("/")

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "store",
     "subscribe",
     "ticket",
+    "create_review",
 ]
 
 MIDDLEWARE = [

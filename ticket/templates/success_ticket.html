@@ -1,0 +1,33 @@
+{% include "header.html" %}
+<!-- {% include "reload_ticket.html" %} -->
+{% include "navbar.html" %}
+{% if user.username %}
+    <p>Hello, {{ user.username }}.</p>
+{% endif %}
+{% block content %}
+    <div class="container mb-3 text-center">
+        Votre ticket a été créé
+    </div>
+    <div class="container mb-3 text-center">
+        <div class="row">
+            <div class="text-start">
+                {{ ticket_title }}
+            </div>
+
+            <div class="text-start">
+                {{ ticket_description }}
+            </div>
+
+            <div class="m-3 text-start">
+                <img src="https://zupimages.net/up/21/32/6ysi.jpg"
+                     class="rounded img-fluid border border-primary"
+                     alt="visual">
+            </div>
+        </div>
+    </div>
+    <div class="container my-3 text-center">
+        <a href="/" class="btn btn-success" role="button">Back to
+            MainPage</a>
+    </div>
+{% endblock content %}
+{% include "footer.html" %}

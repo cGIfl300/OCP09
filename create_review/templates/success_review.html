@@ -1,0 +1,48 @@
+{% include "header.html" %}
+<!-- {% include "reload_create_review.html" %} -->
+{% include "navbar.html" %}
+{% if user.username %}
+    <p>Hello, {{ user.username }}.</p>
+{% endif %}
+{% block content %}
+    <div class="container mb-3 text-center">
+        Success review
+    </div>
+    <div class="container border">
+        <div>
+            Livre / Article
+        </div>
+        <div>
+            {{ ticket_title }}
+        </div>
+        <div class="border">
+            {{ ticket_description }}
+        </div>
+        <div class="m-3 text-start">
+            <img src="https://zupimages.net/up/21/32/6ysi.jpg"
+                 class="rounded img-fluid border border-primary"
+                 alt="visual">
+        </div>
+
+        <hr>
+
+        <div>
+            Critique
+        </div>
+        <div>
+            {{ review_headline }}
+        </div>
+        <div>
+            {{ review_rating }}
+        </div>
+        <div class="border">
+            {{ review_body }}
+        </div>
+    </div>
+
+    <div class="container my-3 text-center">
+        <a href="/" class="btn btn-success" role="button">Back to
+            MainPage</a>
+    </div>
+{% endblock content %}
+{% include "footer.html" %}

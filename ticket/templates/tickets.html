@@ -1,0 +1,35 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% block content %}
+    <div class="container-fluid row border">
+        {% for ticket in tickets %}
+            <div class="container border col m-1 rounded">
+                <div class="border text-center rounded my-1">
+                    <h5>{{ ticket.title }}</h5>
+                </div>
+                <div class="text-start">
+                    {{ ticket.description }}
+                </div>
+                <div class="my-1 text-start">
+                    <img src="https://zupimages.net/up/21/32/6ysi.jpg"
+                         class="rounded img-fluid border border-primary"
+                         alt="visual">
+                </div>
+
+                <div class="container-fluid text-center mb-1">
+                    <a class="btn btn-danger"
+                       href="/delete_ticket/?ticket_id={{ ticket.id }}"
+                       role="button">Supprimer le ticket {{ ticket.id }}</a>
+                </div>
+                <div class="container-fluid text-center mb-1">
+                    <a class="btn btn-primary" href="/tickets/"
+                       role="button">Créer une critique</a>
+                </div>
+            </div>
+            {#            {% if forloop.counter|divisibleby:3 %}#}
+            {#                <div class="clearfix"></div>#}
+            {#            {% endif %}#}
+        {% endfor %}
+    </div>
+{% endblock content %}
+{% include "footer.html" %}

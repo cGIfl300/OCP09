@@ -1,9 +1,9 @@
 def stars(number_of_stars, max_stars):
     """
-    For a given number of stars, will return the html code.
+    For a given number of stars, will return number of stars.
     :param number_of_stars: number of stars
     :param max_stars: max number of stars
-    :return: an HTML string
+    :return: a string
     """
 
     star_true = "★"

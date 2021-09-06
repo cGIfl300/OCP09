@@ -23,6 +23,7 @@ from store.register_views import register_view
 from store.welcome_views import welcome_screen
 from subscribe.followed_user import followed_users
 from subscribe.views import subscribe_view, un_follow
+from ticket.create_review_from_ticket import create_review_from_ticket
 from ticket.views import create_ticket_view, tickets_view, delete_ticket
 
 urlpatterns = [
@@ -38,4 +39,6 @@ urlpatterns = [
     path("create_review/", create_review_view),
     path("tickets/", tickets_view),
     path("delete_ticket/", delete_ticket),
+    path("review_from_tickets/", create_review_from_ticket),
+    # path("update_review/"),
 ]

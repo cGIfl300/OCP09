@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from create_review.views import create_review_view
+from review.views import update_review
 from store.login_views import login_view
 from store.logout_views import logout_view
 from store.register_views import register_view
@@ -40,5 +41,5 @@ urlpatterns = [
     path("tickets/", tickets_view),
     path("delete_ticket/", delete_ticket),
     path("review_from_tickets/", create_review_from_ticket),
-    # path("update_review/"),
+    path("update_review/", update_review),
 ]

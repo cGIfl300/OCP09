@@ -18,6 +18,16 @@ def update_review(request):
     ticket_id = request.GET.get("ticket_id", None)
     actual_user = User.objects.filter(username=request.user.username).first()
 
+    rating = request.POST.get("review_rating", None)
+    headline = request.POST.get("review_headline", None)
+    body = request.POST.get("review_body", None)
+
+    if rating is None or headline is None or body is None or ticket_id is None:
+        return redirect("/review_from_tickets/")
+
+    ticket_id = int(ticket_id)
+    rating = int(rating)
+
     # Check if a review is already existing
     if already_commented(ticket_id=ticket_id,
                          username=request.user.username):
@@ -26,9 +36,18 @@ def update_review(request):
 
         review = Review.objects.filter(user=actual_user,
                                        ticket=actual_ticket).first()
+        review(headline=headline,
+               rating=rating,
+               body=body)
+        review.save()
     else:
         # False: create the review
-        pass
+        review = Review(headline=headline,
+                        rating=rating,
+                        body=body,
+                        ticket=Ticket(id=ticket_id),
+                        user=actual_user)
+        review.save()
 
     # Return a success page
     return redirect("/")

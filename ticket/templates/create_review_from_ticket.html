@@ -1,0 +1,42 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% block content %}
+    <div class="container border">
+        <div>
+            Vous êtes en train de répondre à
+        </div>
+        <div class="container border m-1">
+            <div class="text-end my-1">
+                <div class="lead">{{ ticket.time_created|date:"H:i, m F Y" }}</div>
+            </div>
+            <div class="text-start my-1">
+                {{ ticket.user }} a demandé une critique
+            </div>
+            <div class="text-start my-1">
+                {{ ticket.title }}
+            </div>
+            <div class="text-start">
+                {{ ticket.description }}
+            </div>
+            <div class="my-1 text-start">
+                <img src="https://zupimages.net/up/21/32/6ysi.jpg"
+                     class="rounded img-fluid border border-primary"
+                     alt="visual">
+            </div>
+        </div>
+        <hr>
+        <div>
+            Critique
+        </div>
+        {% if message is not None %}
+            <div class="text-end border border-warning">
+                {{ message }}
+            </div>
+        {% endif %}
+        <form action="/update_review/?ticket_id={{ ticket.id }}" method="POST">
+            {% csrf_token %}
+            {% include "gab_review.html" %}
+        </form>
+    </div>
+{% endblock content %}
+{% include "footer.html" %}

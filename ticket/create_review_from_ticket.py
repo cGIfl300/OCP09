@@ -23,13 +23,11 @@ def create_review_from_ticket(request):
 
     # Check if a review already exist
 
-    if already_commented(ticket_id=ticket_id,
-                         username=request.user.username):
+    if already_commented(ticket_id=ticket_id, username=request.user.username):
         message = "Review already exist - Will erase the existing one"
 
     # Warm if already existing
 
-    context = ({"ticket": ticket_for_review,
-                "message": message})
+    context = {"ticket": ticket_for_review, "message": message}
 
     return render(request, "create_review_from_ticket.html", context)

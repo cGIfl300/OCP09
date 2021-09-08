@@ -29,24 +29,26 @@ def update_review(request):
     rating = int(rating)
 
     # Check if a review is already existing
-    if already_commented(ticket_id=ticket_id,
-                         username=request.user.username):
+    if already_commented(ticket_id=ticket_id, username=request.user.username):
         # True: update the review
         actual_ticket = Ticket.objects.filter(id=ticket_id).first()
 
-        review = Review.objects.filter(user=actual_user,
-                                       ticket=actual_ticket).first()
-        review(headline=headline,
-               rating=rating,
-               body=body)
+        review = Review.objects.filter(
+            user=actual_user, ticket=actual_ticket
+        ).first()
+        review.headline = headline
+        review.rating = rating
+        review.body = body
         review.save()
     else:
         # False: create the review
-        review = Review(headline=headline,
-                        rating=rating,
-                        body=body,
-                        ticket=Ticket(id=ticket_id),
-                        user=actual_user)
+        review = Review(
+            headline=headline,
+            rating=rating,
+            body=body,
+            ticket=Ticket(id=ticket_id),
+            user=actual_user,
+        )
         review.save()
 
     # Return a success page

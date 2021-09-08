@@ -18,8 +18,9 @@ def already_commented(ticket_id, username):
     actual_user = User.objects.filter(username__iexact=username).first()
     actual_ticket = Ticket.objects.filter(id=ticket_id).first()
 
-    review = Review.objects.filter(user=actual_user,
-                                   ticket=actual_ticket).first()
+    review = Review.objects.filter(
+        user=actual_user, ticket=actual_ticket
+    ).first()
     if review is None:
         return False
     return True

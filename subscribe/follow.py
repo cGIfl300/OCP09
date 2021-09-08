@@ -16,8 +16,9 @@ def follow(user_to_follow, request):
     user_to_follow = User.objects.filter(username__iexact=user_to_follow)[0]
 
     try:
-        add_followed = UserFollows(user=actual_user,
-                                   followed_user=user_to_follow)
+        add_followed = UserFollows(
+            user=actual_user, followed_user=user_to_follow
+        )
         add_followed.save()
     except IntegrityError:
         # If user is already followed, just return True

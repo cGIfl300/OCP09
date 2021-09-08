@@ -4,6 +4,7 @@ from django.db import transaction
 from django.shortcuts import render
 
 from store.models import Ticket, Review
+from ticket.stars import stars
 
 
 @login_required
@@ -21,26 +22,34 @@ def create_review_view(request):
         review_headline = request.POST.get("review_headline", None)
         review_body = request.POST.get("review_body", None)
 
-        if ticket_title is not None \
-                and ticket_description is not None \
-                and review_rating is not None:
+        if (
+                ticket_title is not None
+                and ticket_description is not None
+                and review_rating is not None
+        ):
             # Redirect to a success page
-            context = ({"ticket_title": ticket_title,
-                        "ticket_description": ticket_description,
-                        "ticket_picture": ticket_picture,
-                        "review_rating": int(review_rating),
-                        "review_headline": review_headline,
-                        "review_body": review_body})
-            new_ticket = Ticket(user=actual_user,
-                                title=ticket_title,
-                                description=ticket_description,
-                                image=ticket_picture)
+            context = {
+                "ticket_title": ticket_title,
+                "ticket_description": ticket_description,
+                "ticket_picture": ticket_picture,
+                "review_rating": stars(int(review_rating), 5),
+                "review_headline": review_headline,
+                "review_body": review_body,
+            }
+            new_ticket = Ticket(
+                user=actual_user,
+                title=ticket_title,
+                description=ticket_description,
+                image=ticket_picture,
+            )
             new_ticket.save()
-            new_review = Review(user=actual_user,
-                                ticket=new_ticket,
-                                rating=review_rating,
-                                headline=review_headline,
-                                body=review_body)
+            new_review = Review(
+                user=actual_user,
+                ticket=new_ticket,
+                rating=int(review_rating),
+                headline=review_headline,
+                body=review_body,
+            )
             new_review.save()
             return render(request, "success_review.html", context)
 

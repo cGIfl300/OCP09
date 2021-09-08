@@ -2,6 +2,8 @@ from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
+from OCP09.settings import MEDIA_ROOT
+
 
 class Ticket(models.Model):
     title = models.CharField(max_length=128)
@@ -9,7 +11,7 @@ class Ticket(models.Model):
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, storage=MEDIA_ROOT)
     time_created = models.DateTimeField(
         auto_now_add=True
     )  # Error from model: auto_add_now

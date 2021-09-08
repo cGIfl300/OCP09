@@ -9,7 +9,8 @@ def stars(number_of_stars, max_stars):
     star_true = "★"
     star_false = "☆"
     return star_true * number_of_stars + star_false * (
-            max_stars - number_of_stars)
+            max_stars - number_of_stars
+    )
 
 
 def test_stars():

@@ -15,17 +15,21 @@ def create_ticket_view(request):
         ticket_title = request.POST.get("ticket_title", None)
         ticket_description = request.POST.get("ticket_description", None)
         ticket_picture = request.POST.get("ticket_picture", None)
-        if ticket_title is not None \
-                and ticket_description is not None:
+        if ticket_title is not None and ticket_description is not None:
             # Redirect to a success page.
-            context = ({"ticket_title": ticket_title,
-                        "ticket_description": ticket_description,
-                        "ticket_picture": ticket_picture})
-            new_ticket = Ticket(user=actual_user,
-                                title=ticket_title,
-                                description=ticket_description,
-                                image=ticket_picture)
+            context = {
+                "ticket_title": ticket_title,
+                "ticket_description": ticket_description,
+                "ticket_picture": ticket_picture,
+            }
+            new_ticket = Ticket(
+                user=actual_user,
+                title=ticket_title,
+                description=ticket_description,
+                image=ticket_picture,
+            )
             new_ticket.save()
+            # print(request.upload_handlers[0].raw_data)
             return render(request, "success_ticket.html", context)
 
     return render(request, "create_ticket.html")
@@ -40,7 +44,7 @@ def tickets_view(request):
     """
     every_ticket = list(Ticket.objects.all())
 
-    context = ({"tickets": every_ticket})
+    context = {"tickets": every_ticket}
     return render(request, "tickets.html", context)
 
 

@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class CreateReviewConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'create_review'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "create_review"

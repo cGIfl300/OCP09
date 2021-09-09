@@ -5,7 +5,7 @@
     Créer une critique
 </div>
 <div class="container mb-3 text-center border">
-    <form action="/create_review/" method="POST">
+    <form action="/create_review/" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row">
             <div class="text-start mb-3">Livre / Article</div>

@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.utils.datastructures import MultiValueDictKeyError
 
 from store.models import Ticket
 
@@ -14,14 +15,15 @@ def create_ticket_view(request):
     if request.method == "POST":
         ticket_title = request.POST.get("ticket_title", None)
         ticket_description = request.POST.get("ticket_description", None)
-        ticket_picture = request.POST.get("ticket_picture", None)
+
+        # Check if a file has been sent
+        try:
+            ticket_picture = request.FILES["ticket_picture"]
+        except MultiValueDictKeyError:
+            ticket_picture = None
+
         if ticket_title is not None and ticket_description is not None:
             # Redirect to a success page.
-            context = {
-                "ticket_title": ticket_title,
-                "ticket_description": ticket_description,
-                "ticket_picture": ticket_picture,
-            }
             new_ticket = Ticket(
                 user=actual_user,
                 title=ticket_title,
@@ -29,7 +31,7 @@ def create_ticket_view(request):
                 image=ticket_picture,
             )
             new_ticket.save()
-            # print(request.upload_handlers[0].raw_data)
+            context = {"ticket": new_ticket}
             return render(request, "success_ticket.html", context)
 
     return render(request, "create_ticket.html")

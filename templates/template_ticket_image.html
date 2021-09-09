@@ -1,0 +1,13 @@
+{% if ticket.image %}
+    <div class="m-3 text-start">
+        <img src="{{ ticket.image }}"
+             class="rounded img-fluid border border-primary"
+             alt="visual">
+    </div>
+{% else %}
+    <div class="m-3 text-start">
+        <img src="/static/no_book.png"
+             class="rounded img-fluid border border-primary"
+             alt="visual">
+    </div>
+{% endif %}

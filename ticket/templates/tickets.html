@@ -10,12 +10,7 @@
                 <div class="text-start">
                     {{ ticket.description }}
                 </div>
-                <div class="my-1 text-start">
-                    <img src="https://zupimages.net/up/21/32/6ysi.jpg"
-                         class="rounded img-fluid border border-primary"
-                         alt="visual">
-                </div>
-
+                {% include "template_ticket_image.html" %}
                 <div class="container-fluid text-center mb-1">
                     <a class="btn btn-danger"
                        href="/delete_ticket/?ticket_id={{ ticket.id }}"

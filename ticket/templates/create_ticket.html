@@ -8,7 +8,8 @@
         Créer un ticket
     </div>
     <div class="container mb-3 text-center">
-        <form action="/create_ticket/" method="POST">
+        <form action="/create_ticket/" method="POST"
+              enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
                 <div class="text-start">

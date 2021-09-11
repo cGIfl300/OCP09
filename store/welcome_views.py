@@ -65,8 +65,9 @@ def create_stream(local_user):
         # 2021-08-26 15:38:14.230213+00:00
         # 2021-08-26 15:38:14.230213+00:00
 
-        tpm_review = Review.objects.filter(ticket=actual_ticket,
-                                           user=local_user).first()
+        tpm_review = Review.objects.filter(
+            ticket=actual_ticket, user=local_user
+        ).first()
 
         if tpm_review is not None:
             actual_ticket.review = tmp_review

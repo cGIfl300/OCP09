@@ -34,8 +34,9 @@ def create_stream(local_user):
     # For each ticket, check if there is a review wrote by the actual user
     for ticket in user_tickets:
         tpm_review = Review.objects.filter(ticket=ticket).first()
-        tmp_review.stars = stars(int(number_of_stars=tmp.review.rating),
-                                 max_stars=5)
+        tmp_review.stars = stars(
+            int(number_of_stars=tmp_review.rating), max_stars=5
+        )
         if tpm_review is not None:
             ticket.review = tmp_review
             tmp_review = None
@@ -58,6 +59,7 @@ def create_stream(local_user):
             user_reviews = None
 
     articles = reversed(
-        sorted(articles, key=lambda article_tmp: article_tmp.time_created))
+        sorted(articles, key=lambda article_tmp: article_tmp.time_created)
+    )
 
     return articles

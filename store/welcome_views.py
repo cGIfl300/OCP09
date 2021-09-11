@@ -35,7 +35,7 @@ def create_stream(local_user):
     for ticket in user_tickets:
         tpm_review = Review.objects.filter(ticket=ticket).first()
         tmp_review.stars = stars(
-            number_of_stars=int(tmp_review.rating), max_stars=5
+            number_of_stars=int(ticket.rating), max_stars=5
         )
         if tpm_review is not None:
             ticket.review = tmp_review

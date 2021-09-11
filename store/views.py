@@ -1,16 +1,6 @@
 from django.shortcuts import redirect
 
 
-def stream_view(request):
-    # Here will be the view "Flux"
-    return redirect("/")
-
-
-def reply_comment_view(request):
-    # Here will be the view "Reply to a critique"
-    return redirect("/")
-
-
 def my_stream_view(request):
     # Here will be the view "Voir vos propres post"
     return redirect("/")

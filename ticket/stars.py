@@ -1,8 +1,8 @@
 def stars(number_of_stars, max_stars):
     """
     For a given number of stars, will return number of stars.
-    :param number_of_stars: number of stars
-    :param max_stars: max number of stars
+    :param int number_of_stars: number of stars
+    :param int max_stars: max number of stars
     :return: a string
     """
 

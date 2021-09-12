@@ -35,7 +35,7 @@ def create_stream(local_user):
     users_follow = UserFollows.objects.filter(user=local_user)
     # For each user we follow, chek his reviews and tickets
     for follower in users_follow:
-        # Get the user identify
+        # Get the follower tickets and reviews
         user_tickets = Ticket.objects.filter(user=follower.user)
         user_reviews = Review.objects.filter(user=follower.user)
 

@@ -13,8 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 
 from create_review.views import create_review_view
 from review.views import update_review
@@ -28,18 +30,18 @@ from ticket.create_review_from_ticket import create_review_from_ticket
 from ticket.views import create_ticket_view, tickets_view, delete_ticket
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", welcome_screen),
-    path("login/", login_view),
-    path("register/", register_view),
-    path("logout/", logout_view),
-    path("subscribe/", subscribe_view),
-    path("followed_users/", followed_users),
-    path("unfollow/", un_follow),
-    path("create_ticket/", create_ticket_view),
-    path("create_review/", create_review_view),
-    path("tickets/", tickets_view),
-    path("delete_ticket/", delete_ticket),
-    path("review_from_tickets/", create_review_from_ticket),
-    path("update_review/", update_review),
-]
+                  path("admin/", admin.site.urls),
+                  path("", welcome_screen),
+                  path("login/", login_view),
+                  path("register/", register_view),
+                  path("logout/", logout_view),
+                  path("subscribe/", subscribe_view),
+                  path("followed_users/", followed_users),
+                  path("unfollow/", un_follow),
+                  path("create_ticket/", create_ticket_view),
+                  path("create_review/", create_review_view),
+                  path("tickets/", tickets_view),
+                  path("delete_ticket/", delete_ticket),
+                  path("review_from_tickets/", create_review_from_ticket),
+                  path("update_review/", update_review),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

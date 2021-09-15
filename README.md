@@ -20,6 +20,9 @@ If not consider doing it:
 
 ## Environment Setup
 
+You must download and install python, according to your operating system, python
+is freely available at [python.org](https://www.python.org/).
+
 ### Cloning the project
 
 Go into your source directory  
@@ -44,6 +47,10 @@ Activate the venv for windows
 ### Initialise the dev DB
 
 `python manage.py migrate`
+
+### Create a superuser account
+
+`python manage.py createsuperuser`
 
 ### Run the dev server
 

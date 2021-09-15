@@ -11,17 +11,15 @@ framework and to release it on heroku cloud.
 
 # Prerequisite
 
-I suppose you ever installed python and git before.  
-If not consider doing it:  
-[python](https://www.python.org/)  
-[git](https://www.git-scm.com/)
+I suppose you ever installed python and git before. If not, consider doing it:
+
+- [ ] You must download and install python, according to your operating system,
+  python is freely available at [python.org](https://www.python.org/).
+- [ ] You can use [git](https://www.git-scm.com/).
 
 # Setup
 
 ## Environment Setup
-
-You must download and install python, according to your operating system, python
-is freely available at [python.org](https://www.python.org/).
 
 ### Cloning the project
 

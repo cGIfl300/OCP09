@@ -54,6 +54,11 @@ Activate the venv for windows
 
 `python manage.py runserver`
 
+## Notes
+- The login creation have no security option, you can register as many account as you need to test the app.
+- Files are saved in /media.
+- The database is using sqlite on db.sqlite3.
+
 ### Internal notes:
 
 - Problem in the db UML Diagram:   

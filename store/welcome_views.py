@@ -13,6 +13,5 @@ from store.create_stream import create_stream
 def welcome_screen(request):
     # Get actual user
     actual_user = User.objects.filter(username__iexact=request.user.username)[0]
-
-    create_stream(local_user=actual_user)
-    return render(request, "welcome_screen.html")
+    context = {"articles": create_stream(local_user=actual_user)}
+    return render(request, "welcome_screen.html", context)

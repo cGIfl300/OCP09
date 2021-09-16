@@ -1,9 +1,12 @@
 {% include "header.html" %}
 {% include "navbar.html" %}
 {% if user.username %}
-    <p>Hello, {{ user.username }}.</p>
+    <div class="container-fluid text-end">
+        Logged in as {{ user.username }}
+    </div>
 {% endif %}
 {% block content %}
 {% endblock content %}
 {% include "stream.html" %}
+{% include "feed.html" %}
 {% include "footer.html" %}

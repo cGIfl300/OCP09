@@ -1,0 +1,10 @@
+{% for article in articles %}
+    {# Check if the object is an article or a ticket to apply the good gabarit.#}
+    <div class="container border my-1">
+        {% if article.title %}
+            {% include "article_ticket.html" %}
+        {% else %}
+{#            {% include "article_ticket.html" %}#}
+        {% endif %}
+    </div>
+{% endfor %}

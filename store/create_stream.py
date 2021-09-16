@@ -15,8 +15,8 @@ def create_stream(local_user):
     articles = []
     tmp_review = None
 
-    # Obtain the list of ticket created by actual user
-    user_tickets = Ticket.objects.filter(user=local_user)
+    # Obtain the list of tickets
+    user_tickets = Ticket.objects.all()
 
     # For each ticket, check if there is a review wrote by the actual user
     for actual_ticket in user_tickets:
@@ -29,22 +29,25 @@ def create_stream(local_user):
                 number_of_stars=actual_ticket.review.rating, max_stars=5
             )
             tmp_review = None
-
         articles.append(actual_ticket)
 
-    users_follow = UserFollows.objects.filter(user=local_user)
     # For each user we follow, chek his reviews and tickets
+    users_follow = UserFollows.objects.filter(user=local_user.id)
     for follower in users_follow:
         # Get the follower tickets and reviews
-        user_tickets = Ticket.objects.filter(user=follower.user)
-        user_reviews = Review.objects.filter(user=follower.user)
+        user_tickets = Ticket.objects.filter(user=follower.followed_user)
+        user_reviews = Review.objects.filter(user=follower.followed_user)
 
-        if user_tickets is not None:
-            articles = articles + list(user_tickets)
-            user_tickets = None
-        if user_reviews is not None:
-            articles = articles + list(user_reviews)
-            user_reviews = None
+        # Get the tickets
+        for user_ticket in user_tickets:
+            user_review = Review.objects.filter(user=follower.followed_user,
+                                                ticket=user_ticket).first()
+            user_ticket.review = user_review
+            articles.append(user_ticket)
+
+        # Get the reviews
+        for user_review in user_reviews:
+            articles.append(user_review)
 
     articles = reversed(
         sorted(articles, key=lambda article_tmp: article_tmp.time_created)

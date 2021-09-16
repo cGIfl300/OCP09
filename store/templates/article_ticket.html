@@ -1,0 +1,40 @@
+<div class="container mb-3">
+    {% if user.username == article.user.username %}
+        Vous avez demandé une critique
+    {% else %}
+        {{ article.user }} a demandé une critique
+    {% endif %}
+</div>
+<div class="container mb-3 text-center">
+    <div class="row">
+        <div class="text-end my-1">
+            <div class="lead">{{ article.time_created|date:"H:i, m F Y" }}</div>
+        </div>
+        <div class="text-start mb-3">
+            {{ article.title }}
+        </div>
+        <div class="text-start">
+            {{ article.description }}
+        </div>
+        {% if article.image %}
+            <div class="m-3 text-start">
+                <img src="{{ article.image.url }}"
+                     class="rounded img-fluid border border-primary"
+                     alt="visual">
+            </div>
+        {% else %}
+            <div class="m-3 text-start">
+                <img src="/static/no_book.png"
+                     class="rounded img-fluid border border-primary"
+                     alt="visual">
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% if user.username == article.user.username or not article.review %}
+    <div class="container my-3 text-end">
+        <a href="/review_from_tickets/?ticket_id={{ article.id }}"
+           class="btn btn-success" role="button">{% if not article.review %}
+            Créer une critique{% else %}Modifier ma critique{% endif %}</a>
+    </div>
+{% endif %}

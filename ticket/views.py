@@ -59,5 +59,6 @@ def delete_ticket(request):
     """
     ticket_id = request.GET.get("ticket_id", None)
     ticket_to_delete = Ticket.objects.filter(id=ticket_id)
-    ticket_to_delete.delete()
+    if request.username == ticket_to_delete.user:
+        ticket_to_delete.delete()
     return redirect("/tickets/")

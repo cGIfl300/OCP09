@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "ticket",
     "create_review",
     "review",
+    "post",
 ]
 
 MIDDLEWARE = [

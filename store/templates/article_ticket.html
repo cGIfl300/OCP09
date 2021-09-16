@@ -36,3 +36,10 @@
             Créer une critique{% else %}Modifier ma critique{% endif %}</a>
     </div>
 {% endif %}
+{% if user.username != article.user.username %}
+    <div class="container my-3 text-end">
+        <a href="/review_from_tickets/?ticket_id={{ article.id }}"
+           class="btn btn-success" role="button">{% if not article.review %}
+            Créer une critique{% else %}Modifier ma critique{% endif %}</a>
+    </div>
+{% endif %}

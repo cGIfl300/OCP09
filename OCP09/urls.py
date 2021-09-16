@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path
 
 from create_review.views import create_review_view
+from post.views import post_view
 from review.views import update_review
 from store.login_views import login_view
 from store.logout_views import logout_view
@@ -44,4 +45,5 @@ urlpatterns = [
                   path("delete_ticket/", delete_ticket),
                   path("review_from_tickets/", create_review_from_ticket),
                   path("update_review/", update_review),
+                  path("post/", post_view),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

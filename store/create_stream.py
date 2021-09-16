@@ -15,21 +15,22 @@ def create_stream(local_user):
     articles = []
     tmp_review = None
 
-    # Obtain the list of tickets
-    user_tickets = Ticket.objects.all()
+    user_tickets = Ticket.objects.filter(user=local_user)
+    user_reviews = Review.objects.filter(user=local_user)
 
-    # For each ticket, check if there is a review wrote by the actual user
-    for actual_ticket in user_tickets:
+    # Get the USER tickets
+    for user_ticket in user_tickets:
+        user_review = Review.objects.filter(user=local_user,
+                                            ticket=user_ticket).first()
+        if user_review:
+            user_review.stars = stars(user_review.rating, 5)
+        user_ticket.review = user_review
+        articles.append(user_ticket)
 
-        tmp_review = Review.objects.filter(ticket=actual_ticket).first()
-
-        if tmp_review is not None:
-            actual_ticket.review = tmp_review
-            actual_ticket.review.stars = stars(
-                number_of_stars=actual_ticket.review.rating, max_stars=5
-            )
-            tmp_review = None
-        articles.append(actual_ticket)
+    # Get the USER reviews
+    for user_review in user_reviews:
+        user_review.stars = stars(user_review.rating, 5)
+        articles.append(user_review)
 
     # For each user we follow, chek his reviews and tickets
     users_follow = UserFollows.objects.filter(user=local_user.id)
@@ -42,11 +43,14 @@ def create_stream(local_user):
         for user_ticket in user_tickets:
             user_review = Review.objects.filter(user=follower.followed_user,
                                                 ticket=user_ticket).first()
+            if user_review:
+                user_review.stars = stars(user_review.rating, 5)
             user_ticket.review = user_review
             articles.append(user_ticket)
 
         # Get the reviews
         for user_review in user_reviews:
+            user_review.stars = stars(user_review.rating, 5)
             articles.append(user_review)
 
     articles = reversed(

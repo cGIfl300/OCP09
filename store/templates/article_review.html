@@ -1,0 +1,44 @@
+<div class="container mb-3">
+    {% if user.username == article.user.username %}
+        Vous avez publié une critique
+    {% else %}
+        {{ article.user }} a publié une critique
+    {% endif %}
+    <div class="text-end my-1">
+        <div class="lead">{{ article.time_created|date:"H:i, m F Y" }}</div>
+    </div>
+    <div class="container mb-3">
+        {{ article.headline }} - {{ article.stars }}
+    </div>
+    <div class="container mb-3">
+        {{ article.body }}
+    </div>
+
+    <div class="container border">
+        <div class="container">
+            Ticket - {% if user.username == article.user.username %}
+            Vous
+        {% else %}
+            {{ article.user }}
+        {% endif %}
+        </div>
+        <div class="container">
+            {{ article.ticket.title }}
+        </div>
+        {% if article.ticket.image %}
+            <div class="m-3 text-start">
+                <img src="{{ article.ticket.image.url }}"
+                     class="rounded img-fluid border border-primary"
+                     alt="visual">
+            </div>
+        {% else %}
+            <div class="m-3 text-start">
+                <img src="/static/no_book.png"
+                     class="rounded img-fluid border border-primary"
+                     alt="visual">
+            </div>
+        {% endif %}
+    </div>
+
+
+</div>

@@ -57,8 +57,11 @@ def delete_ticket(request):
     :param request: ticket.id the ticket id
     :return:
     """
+    # Get actual user
+    actual_user = User.objects.filter(username__iexact=request.user.username)[0]
+
     ticket_id = request.GET.get("ticket_id", None)
-    ticket_to_delete = Ticket.objects.filter(id=ticket_id)
-    if request.username == ticket_to_delete.user:
+    ticket_to_delete = Ticket.objects.filter(id=ticket_id).first()
+    if actual_user == ticket_to_delete.user:
         ticket_to_delete.delete()
-    return redirect("/tickets/")
+    return redirect("/")

@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('store', '0002_alter_ticket_image'),
     ]
@@ -13,6 +12,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='ticket',
             name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='D:\\src\\OCP09\\media'),
+            field=models.ImageField(blank=True, null=True,
+                                    upload_to='D:\\src\\OCP09\\media'),
         ),
     ]

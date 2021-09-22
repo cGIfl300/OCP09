@@ -5,8 +5,8 @@ You first need a Heroku account. Create one.
 ## settings.py
 You have to modify `settings.py`.
 ### DEBUG
-Heroku uses a global ENV variable you can use, automatically turn DEBUG to False
-when in production mode.
+You can use a global ENV variable to switch from dev to prod, to automatically
+turn DEBUG to False when in production mode and use conditional code.
 ```python3
 if os.environ.get('ENV')=='PRODUCTION':
     DEBUG=False

@@ -40,6 +40,7 @@ Add these lines to `settings.py` for django to make the staticfiles. The command
 to make this staticfiles is `collectstatic` you don't need to run it, Heroku
 will.  
 We also add the whitenoise storage when in production mode for later use.  
+Finally, we add the database connector for Heroku.
 ```python3
 if os.environ.get('ENV') == 'PRODUCTION':
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -50,7 +51,12 @@ if os.environ.get('ENV') == 'PRODUCTION':
     
     STATICFILES_STORAGE =
     'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+    db_from_env = djdatabase_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
 ```
+#### Installing the database
+`python -m pip install dj-database-url`
 #### Serving files over whitenoise
 To serve static files, we need an extra app, named whitenoise. This is not a
 part of django project.

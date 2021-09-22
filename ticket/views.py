@@ -53,7 +53,7 @@ def tickets_view(request):
 @login_required
 def delete_ticket(request):
     """
-    Delete a ticket (mainly for debug purpose)
+    Delete a ticket
     :param request: ticket.id the ticket id
     :return:
     """
@@ -62,6 +62,9 @@ def delete_ticket(request):
 
     ticket_id = request.GET.get("ticket_id", None)
     ticket_to_delete = Ticket.objects.filter(id=ticket_id).first()
+
+    # Check if the actual user is the ticket's owner, only the ticket's owner
+    # can delete it.
     if actual_user == ticket_to_delete.user:
         ticket_to_delete.delete()
     return redirect("/")

@@ -73,7 +73,7 @@ MIDDLEWARE = [
 ### Procfile
 Add a file, named `Procfile` at the root of your project
 ```Procfile
-web: gnuicorn OCP09.wsgi
+web: gunicorn OCP09.wsgi
 ```
 ### Requirements
 Generate it using pip.

@@ -11,7 +11,7 @@ class Ticket(models.Model):
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
-    image = models.ImageField(null=True, blank=True, upload_to=MEDIA_ROOT)
+    image = models.ImageField(null=True, blank=True, upload_to="/media/")
     time_created = models.DateTimeField(
         auto_now_add=True
     )  # Error from model: auto_add_now

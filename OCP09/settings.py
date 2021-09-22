@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import dj_database_url
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -148,5 +150,5 @@ if os.environ.get('ENV') == 'PRODUCTION':
         os.path.join(PROJECT_ROOT, '../static'),
     )
 
-    db_from_env = djdatabase_url.config(conn_max_age=500)
+    db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)

@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -25,9 +24,12 @@ SECRET_KEY = (
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ.get('ENV') == 'PRODUCTION':
+    DEBUG = False
+else:
+    DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["ocp09.herokuapp.com", "127.0.0.1"]
 
 # Application definition
 
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = "OCP09.urls"
@@ -123,7 +126,6 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -133,9 +135,22 @@ LOGIN_URL = "/login/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    f'{os.path.join(BASE_DIR, "static")}',
+    f'{os.path.join(BASE_DIR, "../static")}',
 ]
-
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Production on Heroku
+if os.environ.get('ENV') == 'PRODUCTION':
+    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+    STATICFILES_DIRS = (
+        os.path.join(PROJECT_ROOT, '../static'),
+    )
+
+    STATICFILES_STORAGE =
+    'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+    db_from_env = djdatabase_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)

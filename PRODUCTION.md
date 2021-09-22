@@ -95,7 +95,7 @@ By adding a .gitignore file in.
 #### Force git tracking
 ```shell
 git add OCP09/static/.gitignore
-git commit -m "track static file"
+git commit -m "track static folder"
 ```
 ### Create the heroku app
 ```shell

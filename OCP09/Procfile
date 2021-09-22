@@ -1,1 +1,1 @@
-web: gunicorn OCP09.wsgi
+web: python manage.py runserver $PORT

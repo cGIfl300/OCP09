@@ -20,8 +20,9 @@ def create_stream(local_user):
 
     # Get the USER tickets
     for user_ticket in user_tickets:
-        user_review = Review.objects.filter(user=local_user,
-                                            ticket=user_ticket).first()
+        user_review = Review.objects.filter(
+            user=local_user, ticket=user_ticket
+        ).first()
         if user_review:
             user_review.stars = stars(user_review.rating, 5)
         user_ticket.review = user_review
@@ -41,8 +42,9 @@ def create_stream(local_user):
 
         # Get the tickets
         for user_ticket in user_tickets:
-            user_review = Review.objects.filter(user=follower.followed_user,
-                                                ticket=user_ticket).first()
+            user_review = Review.objects.filter(
+                user=follower.followed_user, ticket=user_ticket
+            ).first()
             if user_review:
                 user_review.stars = stars(user_review.rating, 5)
             user_ticket.review = user_review

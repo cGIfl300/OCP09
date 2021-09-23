@@ -29,21 +29,23 @@ from subscribe.followed_user import followed_users
 from subscribe.views import subscribe_view, un_follow
 from ticket.create_review_from_ticket import create_review_from_ticket
 from ticket.views import create_ticket_view, tickets_view, delete_ticket
+from ticketreview.views import ticket_review_view
 
 urlpatterns = [
-                  path("admin/", admin.site.urls),
-                  path("", welcome_screen),
-                  path("login/", login_view),
-                  path("register/", register_view),
-                  path("logout/", logout_view),
-                  path("subscribe/", subscribe_view),
-                  path("followed_users/", followed_users),
-                  path("unfollow/", un_follow),
-                  path("create_ticket/", create_ticket_view),
-                  path("create_review/", create_review_view),
-                  path("tickets/", tickets_view),
-                  path("delete_ticket/", delete_ticket),
-                  path("review_from_tickets/", create_review_from_ticket),
-                  path("update_review/", update_review),
-                  path("post/", post_view),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("admin/", admin.site.urls),
+    path("", welcome_screen),
+    path("login/", login_view),
+    path("register/", register_view),
+    path("logout/", logout_view),
+    path("subscribe/", subscribe_view),
+    path("followed_users/", followed_users),
+    path("unfollow/", un_follow),
+    path("create_ticket/", create_ticket_view),
+    path("create_review/", create_review_view),
+    path("tickets/", tickets_view),
+    path("delete_ticket/", delete_ticket),
+    path("review_from_tickets/", create_review_from_ticket),
+    path("update_review/", update_review),
+    path("post/", post_view),
+    path("ticketreview/", ticket_review_view),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

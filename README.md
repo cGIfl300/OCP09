@@ -42,6 +42,16 @@ Activate the venv for windows
 
 `pip install -r requirements.txt`
 
+### (facultative) Populate a demo database
+
+`python manage.py loaddata db.json`
+
+There are 2 users in this demo database, marc/marc and aurelie/aurelie.
+
+You will also need to get the pictures back.
+
+`tar -xvf media.tar`
+
 ### Initialise the dev DB
 
 `python manage.py migrate`

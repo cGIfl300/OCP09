@@ -26,7 +26,7 @@ SECRET_KEY = (
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
+if os.environ.get("ENV") == "PRODUCTION":
     DEBUG = False
 else:
     DEBUG = True
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "create_review",
     "review",
     "post",
+    "ticketreview",
 ]
 
 MIDDLEWARE = [
@@ -143,12 +144,10 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Production on Heroku
-if os.environ.get('ENV') == 'PRODUCTION':
+if os.environ.get("ENV") == "PRODUCTION":
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-    STATICFILES_DIRS = (
-        os.path.join(PROJECT_ROOT, "static"),
-    )
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
+    STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
 
     db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
+    DATABASES["default"].update(db_from_env)

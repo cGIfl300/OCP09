@@ -1,0 +1,37 @@
+{% include "header.html" %}
+{% include "navbar.html" %}
+{% block content %}
+    <div class="container border">
+        <div class="container text-center">
+            Créer une critique
+        </div>
+        <div class="container border my-3">
+            <form action="/ticketreview/" method="POST"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="text-start">
+                    Livre / Article
+                </div>
+                <div class="mb-3">
+                    <label for="ticket_title" class="form-label">Titre</label>
+                    <input type="text" class="form-control" id="ticket_title"
+                           name="ticket_title">
+                </div>
+                <div class="mb-3">
+                    <label for="ticket_description"
+                           class="form-label">Description</label>
+                    <textarea class="form-control" id="ticket_description"
+                              name="ticket_description" rows="5"></textarea>
+                </div>
+                <div class="mb-3 text-start">
+                    <label for="ticket_image" class="form-label">Image</label>
+                    <input class="form-control" type="file" id="ticket_image"
+                           name="ticket_image">
+                </div>
+                <hr>
+                {% include "gab_review.html" %}
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+{% include "footer.html" %}

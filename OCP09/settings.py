@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import dj_database_url
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -137,17 +137,17 @@ LOGIN_URL = "/login/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    f'{os.path.join(BASE_DIR, "../static")}',
+    f'{os.path.join(BASE_DIR, "/static")}',
 ]
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "/media")
 
 # Production on Heroku
 if os.environ.get("ENV") == "PRODUCTION":
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
-    STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, "../staticfiles")
+    STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "../static"),)
 
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES["default"].update(db_from_env)

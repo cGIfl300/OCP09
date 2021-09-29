@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 #
 # Copyright(C) 2021 cGIfl300 <cgifl300@gmail.com>
+from datetime import datetime
+
+from django.template.defaulttags import now
+
 from store.models import Ticket, Review, UserFollows
 from ticket.stars import stars
 
@@ -54,6 +58,14 @@ def create_stream(local_user):
         for user_review in user_reviews:
             user_review.stars = stars(user_review.rating, 5)
             articles.append(user_review)
+
+        # Get the followers
+        user_followers = UserFollows.objects.filter(followed_user=local_user)
+
+        for follower in user_followers:
+            print(f"Vous êtes suivi par: {follower.user}")
+            follower.time_created=543254325432
+            articles.append(follower)
 
     articles = reversed(
         sorted(articles, key=lambda article_tmp: article_tmp.time_created)

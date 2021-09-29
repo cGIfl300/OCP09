@@ -42,6 +42,9 @@ class UserFollows(models.Model):
         on_delete=models.CASCADE,
         related_name="followed_by",
     )
+    time_created = models.DateTimeField(
+        auto_now_add=True
+    )
 
     class Meta:
         # ensures we don't get multiple UserFollows instances

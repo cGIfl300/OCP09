@@ -3,8 +3,10 @@
     <div class="container border my-1">
         {% if article.title %}
             {% include "article_ticket.html" %}
-        {% else %}
+        {% elif article.rating %}
             {% include "article_review.html" %}
+        {% else %}
+            {% include "article_follower.html" %}
         {% endif %}
     </div>
 {% endfor %}

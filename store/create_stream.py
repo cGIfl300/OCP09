@@ -63,8 +63,6 @@ def create_stream(local_user):
         user_followers = UserFollows.objects.filter(followed_user=local_user)
 
         for follower in user_followers:
-            print(f"Vous êtes suivi par: {follower.user}")
-            follower.time_created=543254325432
             articles.append(follower)
 
     articles = reversed(

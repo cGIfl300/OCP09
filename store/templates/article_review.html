@@ -40,9 +40,17 @@
         {% endif %}
     </div>
     {% if user.username == article.user.username %}
-        <div class="container my-3 text-end">
-            <a href="/review_from_tickets/?ticket_id={{ article.id }}"
-               class="btn btn-success" role="button">Modifier ma critique</a>
+        <div class="cointainer row">
+            <div class="container my-3 text-end">
+                <a href="/review_from_tickets/?ticket_id={{ article.ticket.id }}"
+                   class="btn btn-success" role="button">Modifier ma
+                    critique</a>
+            </div>
+            <div class="container my-3 text-end">
+                <a href="/delete_review/?ticket_id={{ article.ticket.id }}"
+                   class="btn btn-warning" role="button">supprimer ma
+                    critique</a>
+            </div>
         </div>
     {% endif %}
 </div>

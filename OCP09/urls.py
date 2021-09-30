@@ -24,6 +24,7 @@ from review.views import update_review
 from store.login_views import login_view
 from store.logout_views import logout_view
 from store.register_views import register_view
+from store.views import delete_review
 from store.welcome_views import welcome_screen
 from subscribe.followed_user import followed_users
 from subscribe.views import subscribe_view, un_follow
@@ -48,4 +49,5 @@ urlpatterns = [
                   path("update_review/", update_review),
                   path("post/", post_view),
                   path("ticketreview/", ticket_review_view),
+                  path("delete_review/", delete_review)
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

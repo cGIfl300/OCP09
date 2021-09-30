@@ -1,16 +1,19 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
-
-def my_stream_view(request):
-    # Here will be the view "Voir vos propres post"
-    return redirect("/")
+from store.models import Review, Ticket
 
 
-def edit_comment_view(request):
-    # Here will be the view "Modifier votre propre critique"
-    return redirect("/")
-
-
-def edit_ticket_view(request):
-    # Here will be the view "Modifier votre propre ticket"
+@login_required
+def delete_review(request):
+    """
+    delete a ticket as needed
+    """
+    if request.method == "GET":
+        ticket_id = request.GET.get("ticket_id", None)
+        if ticket_id:
+            selected_ticket = Ticket.objects.filter(id=ticket_id).first()
+            selected_review = Review.objects.filter(
+                ticket=selected_ticket).first()
+            selected_review.delete()
     return redirect("/")

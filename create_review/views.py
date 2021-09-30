@@ -23,9 +23,9 @@ def create_review_view(request):
         review_body = request.POST.get("review_body", None)
 
         if (
-            ticket_title is not None
-            and ticket_description is not None
-            and review_rating is not None
+                ticket_title is not None
+                and ticket_description is not None
+                and review_rating is not None
         ):
             # Redirect to a success page
             context = {

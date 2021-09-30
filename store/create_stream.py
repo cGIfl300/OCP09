@@ -2,9 +2,6 @@
 # -*- coding: utf-8 -*-
 #
 # Copyright(C) 2021 cGIfl300 <cgifl300@gmail.com>
-from datetime import datetime
-
-from django.template.defaulttags import now
 
 from store.models import Ticket, Review, UserFollows
 from ticket.stars import stars

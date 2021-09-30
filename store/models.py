@@ -2,8 +2,6 @@ from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
-from OCP09.settings import MEDIA_ROOT
-
 
 class Ticket(models.Model):
     title = models.CharField(max_length=128)

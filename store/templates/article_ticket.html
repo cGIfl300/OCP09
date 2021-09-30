@@ -29,7 +29,7 @@
         </div>
     {% endif %}
 </div>
-{% if user.username == article.user.username or not article.review %}
+{% if user.username == article.user.username and not article.review %}
     <div class="container my-3 text-end">
         <a href="/delete_ticket/?ticket_id={{ article.id }}"
            class="btn btn-warning" role="button">Supprimer ticket</a>

@@ -5,7 +5,6 @@ from django.shortcuts import render
 from django.utils.datastructures import MultiValueDictKeyError
 
 from store.models import Ticket, Review
-from store.refresh_static_files import refresh_static_files
 from ticket.stars import stars
 
 

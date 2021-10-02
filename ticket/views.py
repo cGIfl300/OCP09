@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
 
 from store.models import Ticket
-from store.refresh_static_files import refresh_static_files
 
 
 @login_required

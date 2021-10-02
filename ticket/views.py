@@ -32,7 +32,6 @@ def create_ticket_view(request):
                 image=ticket_picture,
             )
             new_ticket.save()
-            refresh_static_files()
             context = {"ticket": new_ticket}
             return render(request, "success_ticket.html", context)
 

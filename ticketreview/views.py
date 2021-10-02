@@ -43,7 +43,6 @@ def ticket_review_view(request):
                 image=ticket_picture,
             )
             new_ticket.save()
-            refresh_static_files()
             new_review = Review(
                 user=actual_user,
                 ticket=new_ticket,

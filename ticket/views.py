@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
 
 from store.models import Ticket
+from store.refresh_static_files import refresh_static_files
 
 
 @login_required
@@ -31,6 +32,7 @@ def create_ticket_view(request):
                 image=ticket_picture,
             )
             new_ticket.save()
+            refresh_static_files()
             context = {"ticket": new_ticket}
             return render(request, "success_ticket.html", context)
 

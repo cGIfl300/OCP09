@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.utils.datastructures import MultiValueDictKeyError
 
 from store.models import Ticket, Review
+from store.refresh_static_files import refresh_static_files
 from ticket.stars import stars
 
 
@@ -42,6 +43,7 @@ def ticket_review_view(request):
                 image=ticket_picture,
             )
             new_ticket.save()
+            refresh_static_files()
             new_review = Review(
                 user=actual_user,
                 ticket=new_ticket,

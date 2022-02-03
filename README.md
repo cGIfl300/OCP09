@@ -4,9 +4,6 @@ Released on:
 
 - [Github](https://github.com/cgifl300/OCP09/)
 
-Demo at :
-
-- [ocp09.cgifl300.com](https://ocp09.cgifl300.com)
 
 # LITReview OC_P09
 
